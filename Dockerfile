@@ -37,6 +37,7 @@ RUN chmod +x /sbin/pre-conf ; sync \
 #Script to execute after install done and/or to create initial configuration
 COPY after_install.sh /sbin/after_install.sh
 RUN chmod +x /sbin/after_install.sh
+RUN chmod +x /opt/opensim/bin/opensim-ode.sh
 
 # To allow access from outside of the container  to the container service at these ports
 # Need to allow ports access rule at firewall too .  
