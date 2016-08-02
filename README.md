@@ -1,6 +1,8 @@
-# docker-opensimulator
+# docker-osgrid
 
-Docker container for [OpenSimulator 0.8.2.1][3]
+FORKED FROM https://github.com/QuantumObject/docker-opensimulator
+
+Docker container for [OSgrid OpenSimulator][3]
 
 "OpenSimulator is an open source multi-platform, multi-user 3D application server. It can be used to create a virtual environment (or world) which can be accessed through a variety of clients, on multiple protocols. It also has an optional facility (the Hypergrid) to allow users to visit other OpenSimulator installations across the web from their 'home' OpenSimulator installation. In this way, it is the basis of a nascent distributed Metaverse."
 
@@ -19,11 +21,11 @@ To install docker in Ubuntu 14.04 use the commands:
 
 To run container use the command below:
 
-    $ docker run -d -p 9000:9000 -p 9000:9000/udp quantumobject/docker-opensimulator
+    $ docker run -d --name docker-osgrid -p 9000:9000 -p 9000:9000/udp murf66/docker-osgrid:16.04
  
 ## For the first configuration :
 
-     $ docker exec -it container_id after_install
+     $ docker exec -it docker-osgrid after_install.sh
 
 Them respond the questions relate to virtual word : 
 
@@ -31,7 +33,7 @@ Them respond the questions relate to virtual word :
 
  - RegionUUID [29923331-dddd-4acc-a3d8-46d3c129b6e3]:     ==> press enter key to keep the same.
 
- - Region Location [1000,1000]:                           ==> press enter key to keep the same.
+ - Region Location [1000,1000]:                           ==> get a location from http://www.osgrid.org/index.php/opencoordinates
 
  - Internal IP address [0.0.0.0]:                         ==> press enter key to keep the same.
 
@@ -43,11 +45,11 @@ Them respond the questions relate to virtual word :
 
  - New estate name [My Estate]:     ==> press enter or change it. 
 
- - Estate owner first name [Test]:  ==> change or enter for default Test (need to remember it).
+ - Estate owner first name [Test]:  ==> use your osgrid firstname
 
- - Estate owner last name [User]:   ==> change or enter for default User (need to remember it).
+ - Estate owner last name [User]:   ==> use your osgrid lastname
 
- - Password:                       ==> remember it for login (need to remember it).
+ - Password:                       ==> use your osgrid password
 
  - Email:                          ==> ..... 
 
@@ -86,7 +88,7 @@ For additional info about us and our projects check our site [www.quantumobject.
 
 [1]:http://www.opensimulator.org/
 [2]:https://www.docker.com
-[3]:http://opensimulator.org/wiki/Download
+[3]:http://www.osgrid.org/index.php/downloads
 [4]:http://docs.docker.com
 [5]:https://github.com/QuantumObject/docker-opensimulator
 [6]:http://wiki.kokuaviewer.org/wiki/Imprudence:Downloads

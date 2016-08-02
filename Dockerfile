@@ -1,14 +1,14 @@
 #Name of container: docker-opensimulator
 #Version of container: 0.2.3
-FROM quantumobject/docker-baseimage:15.10
-MAINTAINER Angel Rodriguez  "angel@quantumobject.com"
+FROM quantumobject/docker-baseimage:16.04
+MAINTAINER Murf
 
 #Add repository and update the container
 #Installation of necessary package/software for this containers...
 #nant was remove and added mono build dependence
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF \
     && echo "deb http://download.mono-project.com/repo/debian wheezy main" | tee /etc/apt/sources.list.d/mono-xamarin.list
-RUN apt-get update && apt-get install -y -q screen mono-complete ca-certificates-mono\
+RUN apt-get update && apt-get install -y -q screen mono-complete ca-certificates-mono vim unzip \
                     && apt-get clean \
                     && rm -rf /tmp/* /var/tmp/*  \
                     && rm -rf /var/lib/apt/lists/*
@@ -32,10 +32,11 @@ COPY pre-conf.sh /sbin/pre-conf
 RUN chmod +x /sbin/pre-conf ; sync \
     && /bin/bash -c /sbin/pre-conf \
     && rm /sbin/pre-conf
+#ADD osgrid.tgz /opt/opensim/
 
 #Script to execute after install done and/or to create initial configuration
-COPY after_install.sh /sbin/after_install
-RUN chmod +x /sbin/after_install
+COPY after_install.sh /sbin/after_install.sh
+RUN chmod +x /sbin/after_install.sh
 
 # To allow access from outside of the container  to the container service at these ports
 # Need to allow ports access rule at firewall too .  
