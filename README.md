@@ -21,7 +21,7 @@ To install docker in Ubuntu 14.04 use the commands:
 
 To run container use the command below:
 
-    $ docker run -d --name docker-osgrid -p 9000:9000 -p 9000:9000/udp murf66/docker-osgrid:16.04
+    $ docker run -d --name docker-osgrid -p 9000:9000 -p 9000:9000/udp murf66/docker-osgrid
  
 ## For the first configuration :
 
